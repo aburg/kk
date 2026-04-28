@@ -32,7 +32,21 @@ shortcuts:
 ## Usage
 
 ```[bash]
+# list shortcuts
+kk
+
+# git pull
 kk gp
+
+# pull new passwords
 kk pg pull
+
+# sync tasks
 kk ts
 ```
+
+## TODO
+
+- craft some advanced usage examples
+- print a message when there are no shortcuts defined
+- provide shortcut completion (how?)
