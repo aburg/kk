@@ -1,7 +1,7 @@
 # kk
 
 Command shortcuts from yaml.
-They work in every shell so no ALIAS or fish functions for simple stuff.
+They work in every shell so no alias or fish functions for simple stuff.
 
 ## Installation
 
