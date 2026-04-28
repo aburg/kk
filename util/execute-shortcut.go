@@ -23,6 +23,6 @@ func ExecuteShortcut(key string, shortcut config.Shortcut, args []string) error 
 	if shortcut.Command == "" {
 		return fmt.Errorf("the shortcut \"%v\" is missing a command", key)
 	}
-	aishit.Execute(shortcut.Command, args)
+	aishit.Execute(shortcut.Command, append(shortcut.Arguments, args...))
 	return nil
 }

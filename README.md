@@ -33,5 +33,6 @@ shortcuts:
 
 ```[bash]
 kk gp
+kk pg pull
 kk ts
 ```
