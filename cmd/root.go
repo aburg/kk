@@ -45,17 +45,23 @@ to quickly create a Cobra application.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	RunE: func(cmd *cobra.Command, args []string) error {
-		c, err := util.LoadConfig()
+		cfg, err := util.LoadConfig()
 		if err != nil {
 			return err
 		}
 
 		if len(args) == 0 {
-			for key, shortcut := range c.Shortcuts {
-				fmt.Println(key, shortcut.Command)
-			}
+			util.ListShortcuts(&cfg)
 		} else {
-			fmt.Println("now bidde mal den richtigen shortcut holen")
+			key := args[0]
+			shortcut, err := util.GetShortcut(&cfg, key)
+			if err != nil {
+				return err
+			}
+			err = util.ExecuteShortcut(key, shortcut, args[1:])
+			if err != nil {
+				return err
+			}
 		}
 
 		return nil

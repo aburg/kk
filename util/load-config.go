@@ -8,11 +8,11 @@ import (
 )
 
 func LoadConfig() (config.Config, error) {
-	var c config.Config
+	var cfg config.Config
 
-	err := viper.Unmarshal(&c)
+	err := viper.Unmarshal(&cfg)
 	if err != nil {
 		return config.Config{}, fmt.Errorf("unable to decode into sctruct, %v", err)
 	}
-	return c, nil
+	return cfg, nil
 }
