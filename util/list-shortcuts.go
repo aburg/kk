@@ -2,12 +2,18 @@ package util
 
 import (
 	"fmt"
+	"maps"
+	"slices"
 
 	"github.com/aburg/kk/config"
 )
 
 func ListShortcuts(cfg *config.Config) {
-	for key, shortcut := range cfg.Shortcuts {
-		fmt.Printf("%v: %v\n", key, shortcut.Description)
+	keys := slices.Collect[string](maps.Keys(cfg.Shortcuts))
+
+	slices.Sort(keys)
+
+	for _, key := range keys {
+		fmt.Printf("%v: %v\n", key, cfg.Shortcuts[key].Description)
 	}
 }
