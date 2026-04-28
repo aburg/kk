@@ -50,8 +50,12 @@ to quickly create a Cobra application.`,
 			return err
 		}
 
-		for key, shortcut := range c.Shortcuts {
-			fmt.Println(key, shortcut.Command)
+		if len(args) == 0 {
+			for key, shortcut := range c.Shortcuts {
+				fmt.Println(key, shortcut.Command)
+			}
+		} else {
+			fmt.Println("now bidde mal den richtigen shortcut holen")
 		}
 
 		return nil
