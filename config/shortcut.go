@@ -5,4 +5,5 @@ type Shortcut struct {
 	Command     string   `yaml:"command"`
 	Chdir       string   `yaml:"chdir"`
 	Arguments   []string `yaml:"arguments"`
+	Others      []string `yaml:"others"`
 }

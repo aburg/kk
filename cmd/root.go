@@ -45,15 +45,7 @@ var rootCmd = &cobra.Command{
 		if len(args) == 0 {
 			util.ListShortcuts(&cfg)
 		} else {
-			key := args[0]
-			shortcut, err := util.GetShortcut(&cfg, key)
-			if err != nil {
-				return err
-			}
-			err = util.ExecuteShortcut(key, shortcut, args[1:])
-			if err != nil {
-				return err
-			}
+			util.Work(args[0], args[1:], &cfg)
 		}
 
 		return nil

@@ -8,7 +8,7 @@ import (
 	"github.com/aburg/kk/config"
 )
 
-func ExecuteShortcut(key string, shortcut config.Shortcut, args []string) error {
+func ExecuteShortcut(key string, args []string, shortcut config.Shortcut) error {
 	if shortcut.Chdir != "" {
 		dir, err := aishit.ExpandHome(shortcut.Chdir)
 		if err != nil {
@@ -20,9 +20,8 @@ func ExecuteShortcut(key string, shortcut config.Shortcut, args []string) error 
 		}
 		fmt.Println("chdir:", dir)
 	}
-	if shortcut.Command == "" {
-		return fmt.Errorf("the shortcut \"%v\" is missing a command", key)
+	if shortcut.Command != "" {
+		aishit.Execute(shortcut.Command, append(shortcut.Arguments, args...))
 	}
-	aishit.Execute(shortcut.Command, append(shortcut.Arguments, args...))
 	return nil
 }
